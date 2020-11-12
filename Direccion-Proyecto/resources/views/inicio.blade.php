@@ -44,7 +44,7 @@
              <a href=""><img src="/images/ventas.png" width="100" height="100" ></a>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 text-center">
-            <a href=""><img src="/images/proveedores.png" width="100" height="100" ></a>
+            <a href="/proveedores"><img src="/images/proveedores.png" width="100" height="100" ></a>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 text-center">
              <a href=""><img src="/images/compra.png" width="100" height="100" ></a>
