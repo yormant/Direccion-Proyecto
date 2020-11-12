@@ -5,6 +5,7 @@ use App\Http\Controllers\VistaController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\InventariosController;
 use App\Http\Controllers\VendedoresController;
+use App\Http\Controllers\ComprasController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +28,4 @@ Route::get('/inicio',[\App\Http\Controllers\VistaController::class,'inicio'])->n
 Route::resource('productos', ProductosController::class);
 Route::resource('inventarios', InventariosController::class);
 Route::resource('vendedores', VendedoresController::class);
+Route::resource('compras', ComprasController::class);
