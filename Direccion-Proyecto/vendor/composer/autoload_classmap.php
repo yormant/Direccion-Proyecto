@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\ComprasController' => $baseDir . '/app/Http/Controllers/ComprasController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\InventariosController' => $baseDir . '/app/Http/Controllers/InventariosController.php',
     'App\\Http\\Controllers\\ProductosController' => $baseDir . '/app/Http/Controllers/ProductosController.php',
@@ -23,6 +24,7 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Models\\Compra' => $baseDir . '/app/Models/Compra.php',
     'App\\Models\\Inventario' => $baseDir . '/app/Models/Inventario.php',
     'App\\Models\\Producto' => $baseDir . '/app/Models/Producto.php',
     'App\\Models\\Proveedore' => $baseDir . '/app/Models/Proveedore.php',
