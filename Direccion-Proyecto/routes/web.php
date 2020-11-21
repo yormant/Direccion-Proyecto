@@ -5,7 +5,9 @@ use App\Http\Controllers\VistaController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\InventariosController;
 use App\Http\Controllers\VendedoresController;
+use App\Http\Controllers\VentasController;
 use App\Http\Controllers\ComprasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +27,10 @@ Route::get('/index',[\App\Http\Controllers\VistaController::class,'index'])->nam
 Route::get('/recordar',[\App\Http\Controllers\VistaController::class,'recordar'])->name('recordar');
 Route::get('/inicio',[\App\Http\Controllers\VistaController::class,'inicio'])->name('inicio');
 
+
 Route::resource('productos', ProductosController::class);
 Route::resource('inventarios', InventariosController::class);
 Route::resource('vendedores', VendedoresController::class);
+Route::resource('ventas', VentasController::class);
 Route::resource('compras', ComprasController::class);
+
