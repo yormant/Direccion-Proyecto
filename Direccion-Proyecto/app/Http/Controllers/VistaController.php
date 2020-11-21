@@ -15,4 +15,7 @@ class VistaController extends Controller
     public function inicio(){
         return view('inicio');
     }
+    public function busqueda(){
+        return view('busqueda');
+    }
 }
