@@ -18,7 +18,7 @@
     <div class="justify-content-center">
     <div class="row">
             <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12 p-3 mb-2 bg-info text-white text-center">
-                <h3>Edita los Prodcutos del Sistema..!</h3>
+                <h3>Edita los Productos del Sistema..!</h3>
              </div>
         </div>
         <div class="row">
@@ -28,15 +28,20 @@
         </div>
         <br>
         <br>
-        <form action="" method="post" >
-             <div class="form-group row">
-                 <label for="inputName" class="col-sm-2 col"><h3>Id  Telefono:</h3></label>
+            @foreach ($productos as $producto)
+        <form action="/productos/{{$producto->idproducto}} " method="POST" >
+            @csrf
+            @method('put')
+           
+                <div class="form-group row">
+                 <label for="inputName" class="col-sm-2 col"><h3>Id  Del Producto</h3></label>
                  <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="id_telefono" name="id_telefono" value="{{$producto->id}}" />
+                     <input type="text" class="form-control" id="idproducto" name="idproducto" value="{{old('idproducto',$producto->idproducto)}}" />
+                     
                  </div>
                  <label for="inputName" class="col-sm-2 col"><h3>Nombre:</h3></label>
                  <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="nombre" name="nombre" value="{{$producto->nombre}}"/>
+                     <input type="text" class="form-control" id="name" name="name" value="{{old('name',$producto->name)}}"/>
                  </div>
              </div> 
              <br>
@@ -44,19 +49,27 @@
              <div class="form-group row">
                  <label for="inputName" class="col-sm-2 col"><h3>Marca:</h3></label>
                  <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="marca" name="marca" value="{{$producto->marca}}"/>
+                     <input type="text" margin="left" class="form-control" id="marca" name="marca" readonly="readonly" value="
+                     @foreach ($marcas as $marca)
+                     @if ($producto->idmarca==$marca->idmarca)
+                         {{$marca->name}}
+                     @endif                                 
+                  @endforeach  "/>
                  </div>
                  <label for="inputName" class="col-sm-2 col"><h3>Precio:</h3></label>
                  <div class="col-sm-4">                        
-                     <input type="number" class="form-control" id="precio" name="precio" value="{{$producto->precio}}" />
+                     <input type="number" class="form-control" id="precioproveedor" name="precioproveedor" value="{{old('precioproveedor',$producto->precioproveedor)}}" />
                  </div>
              </div> 
+            
+             
              <div class="row">
                 <div class="col-sm-12 text-center">
-                    <button type="button" class="btn btn-info">Guardar</button>
+                    <button type="submit" class="btn btn-info">Guardar</button>
                 </div>
              </div>
         </form>
+        @endforeach
     </div>
 </div>
 @endsection

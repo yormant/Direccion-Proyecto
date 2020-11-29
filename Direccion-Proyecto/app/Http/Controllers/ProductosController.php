@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use DB;
+
 class ProductosController extends Controller
 {
     /**
@@ -14,8 +16,11 @@ class ProductosController extends Controller
     public function index()
     {
         return view('productos.index',[
-            'productos'=> Producto::all()
+            'productos'=> DB::select('select * from ListProductos()'),
+            'marcas'=>DB::select('select * from ListMarcas()')
         ]);
+
+        
     }
 
     /**
@@ -37,6 +42,13 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
+        $producto = new Producto();        
+        $producto->name = $request->get('name');
+        $producto->precioproveedor = $request->get('precioproveedor');
+        $producto->idmarca = $idmarca->get('idmarca');
+        DB::select("select createproducto('$producto->name','$producto->precioproveedor',$producto->idmarca)");
+
+        return redirect('/productos');
     }
 
     /**
@@ -58,12 +70,15 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idproducto)
     {
-        $producto = Producto::find($id);
+        
         return view('productos.edit',[
-            'producto'=> $producto
+            'productos'=> DB::select("select * from ShowAProduct('$idproducto')"),
+            'marcas'=>DB::select('select * from ListMarcas()')
         ]);
+
+        
     }
 
     /**
@@ -73,9 +88,20 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idproducto)
     {
         //
+        $producto = new Producto();
+        $producto->idproducto = $idproducto;
+        $producto->name = $request->get('name');
+        $producto->precioproveedor = $request->get('precioproveedor');
+        DB::select("select updateProducto($producto->idproducto,
+        '$producto->name','$producto->precioproveedor'
+        )");
+
+        return redirect('/productos');
+
+
     }
 
     /**
@@ -84,8 +110,21 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idproducto)
+    { 
+        
+       // $producto->delete();
+       
+       DB::select("select * from DeleteProductos('$idproducto')");
+       return redirect('/productos');
+    }
+    public function search()
     {
         //
+        $buscar 				= $_POST['buscar'];
+        return view('productos.search',[
+            'productos'=> DB::select("select * from ShowAProduct('$buscar')"),
+            'marcas'=>DB::select('select * from ListMarcas()')
+        ]);
     }
 }

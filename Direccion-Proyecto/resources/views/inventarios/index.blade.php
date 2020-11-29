@@ -41,13 +41,15 @@
                          <th>Id</th>
                          <th>Nombre</th>
                          <th>Precio Venta</th>
-                         <th>Cantidad Total</th>
+                         <th>Precio Proveedor</th>
+                         <th>Cantidad vendida</th>
+                         <th>Cantidad restante</th>
                          <th>Editar</th>
                      </thead>
                      <tbody>
                          @foreach ($inventarios as $inventario)
                          <tr>
-                             <td>{{$inventario->id}}</td>
+                             <td>{{$inventario->idproductosproveedores}}</td>
                              <td>{{$inventario->nombre}}</td>
                              <td>{{$inventario->precio_venta}}</td>
                              <td>{{$inventario->cantidad_total}}</td>

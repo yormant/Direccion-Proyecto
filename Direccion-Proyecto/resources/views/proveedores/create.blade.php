@@ -28,7 +28,9 @@
         </div>
         <br>
         <br>
-        <form action="" method="post" >
+        <form action="" method="GET" >
+            @csrf
+
         <div class="form-group row">
                  <label for="inputName" class="col-sm-2 col"><h5>Nombre de la empresa:</h5></label>
                  <div class="col-sm-4">                        

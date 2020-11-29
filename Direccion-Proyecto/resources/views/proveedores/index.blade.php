@@ -40,28 +40,38 @@
              <div class="col">
                  <table class="table table-bordered table-striped">
                      <thead>
-                     <th>Id</th>
-                         <th>Nombre de la empresa</th>
-                         <th>NIT</th>
+                         <th>Id</th>
+                         <th>Nombre del proveedor</th>
                          <th>Direccion de la empresa</th>
                          <th>Telefono</th>
+                         <th>Ciudad</th>
+                         <th>Email</th>
                          <th>Editar</th>
                          <th>Eliminar</th>
                      </thead>
                      <tbody>
-                         @foreach ($proveedores as $proveedore)
+                         @foreach ($proveedores as $proveedor)
                          <tr>
-                                <td>{{$proveedore->id}}</td>
-                                <td>{{$proveedore->nombreEmpresa}}</td>
-                                <td>{{$proveedore->nit}}</td>
-                                <td>{{$proveedore->direccion}}</td>
-                                <td>{{$proveedore->telefono}}</td>
+                                <td>{{$proveedor->idproveedor}}</td>
+                                <td>{{$proveedor->name}}</td>                                
+                                <td>{{$proveedor->direccion}}</td>
+                                <td>{{$proveedor->telefono}}</td>
+                                <td>{{$proveedor->ciudad}}</td>
+                                <td>{{$proveedor->email}}</td>
                              <td>
-                                <a class="btn btn-success" href="/proveedores/{{$proveedore->id}}/edit">Editar</a>
+                                <a class="btn btn-success" href="/proveedores/{{$proveedor->idproveedor}}/edit">Editar</a>
                              </td>
                              <td>
-                                <button type="button" class="btn btn-danger">Eliminar</button>
-                             </td>
+                                <form action="{{route('proveedores.destroy',$proveeddor->idproveedor)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')                                    
+                                    <input 
+                                    type="submit"
+                                    class="btn btn-danger"
+                                    value="Delete"
+                                    onclick="return confirm('¿Esta seguro que quiere eliminar Este Proveedor?')">
+                                    </form>
+                            </td>
                          </tr>
                      @endforeach
                  </tbody>

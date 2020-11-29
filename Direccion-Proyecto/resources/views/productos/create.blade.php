@@ -18,7 +18,7 @@
     <div class="justify-content-center">
          <div class="row">
             <div class="col-lg-12 col-md-4 col-sm-6 col-xs-12 p-3 mb-2 bg-info text-white text-center">
-                <h3>Agrega Prodcutos al Sistema..!</h3>
+                <h3>Agrega Productos al Sistema..!</h3>
              </div>
         </div>
         <div class="row">
@@ -28,32 +28,30 @@
         </div>
         <br>
         <br>
-        <form action="" method="post" >
-             <div class="form-group row">
-                 <label for="inputName" class="col-sm-2 col"><h3>Id  Telefono:</h3></label>
-                 <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="id_telefono" name="id_telefono" />
-                 </div>
+        <form action="/productos" method="GET" >
+            @csrf
+             <div class="form-group row">                 
                  <label for="inputName" class="col-sm-2 col"><h3>Nombre:</h3></label>
                  <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="nombre" name="nombre" />
+                     <input type="text" class="form-control" id="name" name="name" />
+                 </div>
+                 <label for="inputName" class="col-sm-2 col"><h3>Marca:</h3></label>
+                 <div class="col-sm-4">                        
+                     <input type="number" class="form-control" id="idmarca" name="idmarca" />
                  </div>
              </div> 
              <br>
              <br>
              <div class="form-group row">
-                 <label for="inputName" class="col-sm-2 col"><h3>Marca:</h3></label>
-                 <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="marca" name="marca" />
-                 </div>
+                 
                  <label for="inputName" class="col-sm-2 col"><h3>Precio:</h3></label>
                  <div class="col-sm-4">                        
-                     <input type="number" class="form-control" id="precio" name="precio" />
+                     <input type="number" class="form-control" id="precioproveedor" name="precioproveedor" />
                  </div>
              </div> 
              <div class="row">
                 <div class="col-sm-12 text-center">
-                    <button type="button" class="btn btn-info">Guardar</button>
+                    <button type="submit" class="btn btn-info">Guardar</button>
                 </div>
              </div>
         </form>
