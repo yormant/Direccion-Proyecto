@@ -28,53 +28,42 @@
         </div>
         <br>
         <br>
-        <form action="" method="post" >
-             <div class="form-group row">
+        @foreach ($vendedores as $vendedor)
+    <form action="/vendedores/{{$vendedor->idvendedor}}" method="POST" >
+        @csrf
+        @method('put')   
+        
+        <div class="form-group row">
                  <label for="inputName" class="col-sm-2 col"><h5>Nombre:</h5></label>
                  <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="{{$vendedore->nombre}}"/>
+                     <input type="text" class="form-control" id="name" name="name"  value="{{old('name',$vendedor->name)}}"/>
                  </div>
                  <label for="inputName" class="col-sm-2 col"><h5>Apellidos:</h5></label>
                  <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" value="{{$vendedore->apellido}}"/>
+                     <input type="text" class="form-control" id="lastname" name="lastname"  value="{{old('lastname',$vendedor->lastname)}}"/>
                  </div>
              </div> 
              <br>
              <br>
              <div class="form-group row">
-                 <label for="inputName" class="col-sm-2 col"><h5>Tipo Documento:</h5></label>
+                <label for="inputName" class="col-sm-2 col"><h5>Usuario:</h5></label>
+                <div class="col-sm-4">                        
+                    <input type="text" class="form-control" id="usuario" name="usuario"  value="{{$vendedor->usuario}}" />
+                </div>
+                 <label for="inputName" class="col-sm-2 col"><h5>Password:</h5></label>
                  <div class="col-sm-4">                        
-                    <select class="form-control">
-                        <option>Tipo Documenyo..</option>
-                        <option>Tajeta Identidad</option>
-                        <option>Cedula</option>
-                      </select>
-                 </div>
-                 <label for="inputName" class="col-sm-2 col"><h5>N° Documento:</h5></label>
-                 <div class="col-sm-4">                        
-                     <input type="number" class="form-control" id="precio" name="precio" placeholder="Solo números" value="{{$vendedore->numero_documento}}" />
+                     <input type="password" class="form-control" id="password" name="password" readonly="readonly" value="{{$vendedor->password}}" />
                  </div>
              </div> 
-             <div class="form-group row">
-                 <label for="inputName" class="col-sm-2 col"><h5>Correo:</h5></label>
-                 <div class="col-sm-2">                        
-                     <input type="text" class="form-control" id="correo" name="correo" placeholder="example@gamil.com" value="{{$vendedore->correo}}"/>
-                 </div>
-                 <label for="inputName" class="col-sm-2 col"><h5>Usuario:</h5></label>
-                 <div class="col-sm-2">                        
-                     <input type="number" class="form-control" id="usuario" name="usuario" placeholder="example" value="{{$vendedore->usuario}}"/>
-                 </div>
-                 <label for="inputName" class="col-sm-2 col"><h5>Contraseña:</h5></label>
-                 <div class="col-sm-2">                        
-                     <input type="number" class="form-control" id="contraseña" name="contraseña" placeholder="contraseña" value="{{$vendedore->contrasena}}" />
-                 </div>
-             </div> 
+             
              <div class="row">
                 <div class="col-sm-12 text-center">
-                    <button type="button" class="btn btn-info">Editar</button>
+                    <button type="submit" class="btn btn-info">Editar</button>
                 </div>
              </div>
         </form>
+        @endforeach
+        
     </div>
 </div>
 @endsection

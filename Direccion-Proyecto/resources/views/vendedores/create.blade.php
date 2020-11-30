@@ -28,51 +28,42 @@
         </div>
         <br>
         <br>
-        <form action="" method="post" >
+        <form action="/vendedores" method="post" >
+            @csrf
+
              <div class="form-group row">
                  <label for="inputName" class="col-sm-2 col"><h5>Nombre:</h5></label>
                  <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre"/>
+                     <input type="text" class="form-control" id="name" name="name"/>
                  </div>
                  <label for="inputName" class="col-sm-2 col"><h5>Apellidos:</h5></label>
                  <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" />
+                     <input type="text" class="form-control" id="lastname" name="lastname" />
                  </div>
              </div> 
              <br>
              <br>
              <div class="form-group row">
-                 <label for="inputName" class="col-sm-2 col"><h5>Tipo Documento:</h5></label>
-                 <div class="col-sm-4">                        
-                 <select class="form-control">
-                        <option>Tipo Documenyo..</option>
-                        <option>Tajeta Identidad</option>
-                        <option>Cedula</option>
-                      </select>
-                 </div>
-                 </div>
-                 <label for="inputName" class="col-sm-2 col"><h5>N° Documento:</h5></label>
-                 <div class="col-sm-4">                        
-                     <input type="number" class="form-control" id="precio" name="precio" placeholder="Solo números" />
-                 </div>
-             </div> 
-             <div class="form-group row">
-                 <label for="inputName" class="col-sm-2 col"><h5>Correo:</h5></label>
-                 <div class="col-sm-2">                        
-                     <input type="text" class="form-control" id="correo" name="correo" placeholder="example@gamil.com"/>
+                 
                  </div>
                  <label for="inputName" class="col-sm-2 col"><h5>Usuario:</h5></label>
+                 <div class="col-sm-4">                        
+                     <input type="text" class="form-control" id="usuario" name="usuario" />
+                 </div>
+             </div> 
+             <div class="form-group row">
+                 <label for="inputName" class="col-sm-2 col"><h5>Password:</h5></label>
                  <div class="col-sm-2">                        
-                     <input type="number" class="form-control" id="usuario" name="usuario" placeholder="example" />
+                     <input type="text" class="form-control" id="password" name="password"/>
                  </div>
                  <label for="inputName" class="col-sm-2 col"><h5>Contraseña:</h5></label>
                  <div class="col-sm-2">                        
-                     <input type="number" class="form-control" id="contraseña" name="contraseña" placeholder="contraseña" />
+                     <input type="text" class="form-control" id="password" name="password"  />
                  </div>
              </div> 
              <div class="row">
                 <div class="col-sm-12 text-center">
-                    <button type="button" class="btn btn-info">Agregar</button>
+                    <button type="submit" class="btn btn-info">Agregar</button>
                 </div>
              </div>
         </form>

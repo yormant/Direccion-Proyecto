@@ -39,14 +39,15 @@ class ProveedoresController extends Controller
     public function store(Request $request)
     {
         //
-        $proveedor = new Proveedor();                                
+        $proveedor = new Proveedore();                                
                                    
         $proveedor->name = $request->get('name');
         $proveedor->direccion = $request->get('direccion');
         $proveedor->telefono = $request->get('telefono');
         $proveedor->ciudad= $request->get('ciudad');
         $proveedor->email= $request->get('email');
-        DB::select("select CreateProveedor('$proveedor->name','$proveedor->direccion','$proveedor->telefono', '$proveedor->ciudad', '$proveedor->email')");
+        $proveedor->cantidadtotal= $request->get('cantidadtotal');
+        DB::select("select CreateProveedor('$proveedor->name','$proveedor->direccion','$proveedor->telefono', '$proveedor->ciudad', '$proveedor->email','$proveedor->cantidadtotal')");
 
         return redirect('/proveedores');
     }
@@ -85,14 +86,15 @@ class ProveedoresController extends Controller
     public function update(Request $request, $idproveedor)
     {
         //
-        $proveedor = new Proveedor();                                
-                                   
+        $proveedor = new Proveedore();                                
+        $proveedor->idproveedor = $idproveedor;                          
         $proveedor->name = $request->get('name');
         $proveedor->direccion = $request->get('direccion');
         $proveedor->telefono = $request->get('telefono');
-        $proveedor->ciudad= $ciudad->get('ciudad');
-        $proveedor->email= $email->get('email');
-        DB::select("select UpdateProveedor('$proveedor->name','$proveedor->direccion','$proveedor->telefono', '$proveedor->ciudad', '$proveedor->email')");
+        $proveedor->ciudad= $request->get('ciudad');
+        $proveedor->email= $request->get('email');
+        $proveedor->cantidadtotal= $request->get('cantidadtotal');
+        DB::select("select UpdateProveedor('$proveedor->idproveedor','$proveedor->name','$proveedor->direccion','$proveedor->telefono', '$proveedor->ciudad', '$proveedor->email', '$proveedor->cantidadtotal')");
 
         return redirect('/proveedores');
     }

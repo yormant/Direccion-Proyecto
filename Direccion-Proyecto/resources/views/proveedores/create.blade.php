@@ -28,7 +28,7 @@
         </div>
         <br>
         <br>
-        <form action="" method="GET" >
+        <form action="/proveedores" method="POST" >
             @csrf
 
             <div class="form-group row">
@@ -59,6 +59,10 @@
                 <label for="inputName" class="col-sm-2 col"><h5>Email:</h5></label>
                 <div class="col-sm-4">                        
                     <input type="text" class="form-control" id="email" name="email" />
+                </div>
+                <label for="inputName" class="col-sm-2 col"><h5>Catidad Total Recibida:</h5></label>
+                <div class="col-sm-4">                        
+                    <input type="number" class="form-control" id="cantidadtotal" name="cantidadtotal" />
                 </div>
              </div> 
              <div class="row">

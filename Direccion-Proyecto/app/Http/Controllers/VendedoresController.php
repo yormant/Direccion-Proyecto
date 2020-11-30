@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vendedore;
+use DB;
 class VendedoresController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class VendedoresController extends Controller
     public function index()
     {
         return view('vendedores.index',[
-            'vendedores'=> Vendedore::all()
+            'vendedores'=> DB::select('select * from  ListVendedores();')
         ]);
     }
 
@@ -37,6 +38,14 @@ class VendedoresController extends Controller
     public function store(Request $request)
     {
         //
+        $vendedor = new Vendedore;
+        $vendedor->name = $request->get('name');
+        $vendedor->lastname = $request->get('lastname');
+        $vendedor->usuario = $request->get('usuario');
+        $vendedor->password= $request->get('password');
+         DB::select("select CreateVendedor('$vendedor->name','$vendedor->lastname','$vendedor->usuario', '$vendedor->password')");
+
+        return redirect('/vendedores');
     }
 
     /**
@@ -56,11 +65,10 @@ class VendedoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idvendedor)
     {
-        $vendedore = Vendedore::find($id);
         return view('vendedores.edit',[
-            'vendedore'=> $vendedore
+            'vendedores'=> DB::select("select * from showVendedores('$idvendedor')")
         ]);
     }
 
@@ -71,9 +79,18 @@ class VendedoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idvendedor)
     {
         //
+        $vendedor = new Vendedore;
+        $vendedor->idvendedor =$idvendedor;
+        $vendedor->name = $request->get('name');
+        $vendedor->lastname = $request->get('lastname');
+        $vendedor->usuario = $request->get('usuario');
+        $vendedor->password= $request->get('password');
+         DB::select("select UpdateVendedor('$vendedor->idvendedor','$vendedor->name','$vendedor->lastname','$vendedor->usuario', '$vendedor->password')");
+
+        return redirect('/vendedores');
     }
 
     /**
@@ -82,8 +99,10 @@ class VendedoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idvendedor)
     {
         //
+        DB::select("select * from DeleteVendedores('$idvendedor')");
+        return redirect('/vendedores');
     }
 }

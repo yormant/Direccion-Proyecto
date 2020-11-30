@@ -40,22 +40,47 @@
                      <thead>
                          <th>Id</th>
                          <th>Nombre</th>
+                         <th>Marca</th>
                          <th>Precio Venta</th>
                          <th>Precio Proveedor</th>
-                         <th>Cantidad vendida</th>
+                         <th>Cantidad Vendida</th>
                          <th>Cantidad restante</th>
-                         <th>Editar</th>
                      </thead>
                      <tbody>
                          @foreach ($inventarios as $inventario)
                          <tr>
-                             <td>{{$inventario->idproductosproveedores}}</td>
-                             <td>{{$inventario->nombre}}</td>
-                             <td>{{$inventario->precio_venta}}</td>
-                             <td>{{$inventario->cantidad_total}}</td>
-                             <td>
-                                <a class="btn btn-success" href="/inventarios/{{$inventario->id}}/edit">Editar</a>
-                             </td>
+                            <td>{{$inventario->idproductosproveedores}}</td>
+                            <td>
+                               @foreach ($productos as $producto)
+                                @if ($inventario->idproducto==$producto->idproducto)
+                                    {{$producto->name}}
+                                @endif                                 
+                                @endforeach 
+                            </td>
+                            <td>
+                                @foreach ($productos as $producto)
+                                @foreach ($marcas as $marca)
+                                    @if ($producto->idmarca==$marca->idmarca and $inventario->idproducto==$producto->idproducto)
+                                        {{$marca->name}}
+                                    @endif                                 
+                                @endforeach 
+                            @endforeach
+                            </td>
+                            <td>
+                                @foreach ($productos as $producto)
+                                @if ($inventario->idproducto==$producto->idproducto)
+                                    {{$producto->precioproveedor}}
+                                @endif                                 
+                                @endforeach 
+                            </td>
+                            <td>{{$inventario->precioproveedor}}</td>
+                             <td>{{$inventario->montovendido}}</td>
+                             @foreach ($proveedores as $proveedor)
+                                @if ($inventario->idproveedor==$proveedor->idproveedor)
+                                    <td>{{$proveedor->cantidadtotal}}</td>
+                                @endif                                 
+                            @endforeach                            
+                             
                          </tr>
                      @endforeach
                  </tbody>

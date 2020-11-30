@@ -46,30 +46,46 @@
                      <thead>
                          <th>Id</th>
                          <th>Producto</th>
-                         <th>Cantidad_Vendida</th>
-                         <th>Cantidad_Restante</th>
+                         <th>Vendedor</th>
+                         <th>Cantidad Vendida</th>
                          <th>Precio_Unidad</th>
                          <th>Precio_Total</th>
-                         <th>Ganacias_Ventas</th>
                          
                      </thead>
                      <tbody>
                          @foreach ($ventas as $venta)
                          <tr>
-                             <td>{{$venta->id}}</td>
-                             <td>{{$venta->Producto}}</td>
-                             <td>{{$venta->Cantidad_Vendida}}</td>
-                             <td>{{$venta->Cantidad_Restante}}</td>
-                             <td>{{$venta->Precio_Unidad}}</td>
-                             <td>{{$venta->Precio_Total}}</td>
-                             <td>{{$venta->Ganacias_Ventas}}</td>
-                          
+                             <td>{{$venta->idproductosventas}}</td>
                              <td>
-                                
+                                @foreach ($compras as $compra)
+                                    @foreach ($productos as $producto)
+                                    @if ($compra->idproducto==$producto->idproducto and $venta->idproductosventas==$compra->idcompra)
+                                        {{$producto->name}}
+                                    @endif                                 
+                                    @endforeach                                
+                                @endforeach  
                              </td>
                              <td>
+                                @foreach ($compras as $compra)
+                                @foreach ($vendedores as $vendedor)
+                                @if ($compra->idvendedor==$vendedor->idvendedor and $venta->idproductosventas==$compra->idcompra)
+                                    {{$vendedor->name}}
+                                @endif                                 
+                                @endforeach                                
+                            @endforeach 
+                             </td>
+                            <td>{{$venta->cantidadvendida}}</td>
+                             <td>
+                                @foreach ($compras as $compra)
+                                @foreach ($productos as $producto)
+                                @if ($compra->idproducto==$producto->idproducto and $venta->idproductosventas==$compra->idcompra)
+                                    {{$producto->precioproveedor}}
+                                @endif                                 
+                                @endforeach                                
+                            @endforeach 
+                             </td>
+                             <td>{{$venta->totalventa}}</td>
                              
-                             </td>
                          </tr>
                      @endforeach
                  </tbody>

@@ -28,7 +28,7 @@
         </div>
         <br>
         <br>
-        <form action="/productos" method="GET" >
+        <form action="/productos" method="POST" >
             @csrf
              <div class="form-group row">                 
                  <label for="inputName" class="col-sm-2 col"><h3>Nombre:</h3></label>
@@ -36,6 +36,7 @@
                      <input type="text" class="form-control" id="name" name="name" />
                  </div>
                  <label for="inputName" class="col-sm-2 col"><h3>Marca:</h3></label>
+                 
                  <div class="col-sm-4">                        
                      <input type="number" class="form-control" id="idmarca" name="idmarca" />
                  </div>

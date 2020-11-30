@@ -44,8 +44,9 @@
                          <th>Nombre del proveedor</th>
                          <th>Direccion de la empresa</th>
                          <th>Telefono</th>
-                         <th>Ciudad</th>
+                         <th>Ciudad</th>                         
                          <th>Email</th>
+                         <th>Cantidad Total Recibida</th>
                          <th>Editar</th>
                          <th>Eliminar</th>
                      </thead>
@@ -58,6 +59,7 @@
                                 <td>{{$proveedor->telefono}}</td>
                                 <td>{{$proveedor->ciudad}}</td>
                                 <td>{{$proveedor->email}}</td>
+                                <td>{{$proveedor->cantidadtotal}}</td>
                              <td>
                                 <a class="btn btn-success" href="/proveedores/{{$proveedor->idproveedor}}/edit">Editar</a>
                              </td>

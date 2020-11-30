@@ -29,14 +29,14 @@
         <br>
         <br>
         @foreach ($proveedores as $proveedor)
-        <form action="" method="post" >
+        <form action="/proveedores/{{$proveedor->idproveedor}}" method="POST" >
             @csrf
             @method('put')
            
              <div class="form-group row">
                 <label for="inputName" class="col-sm-2 col"><h3>Id  Del Proveedor</h3></label>
                 <div class="col-sm-4">                        
-                    <input type="text" class="form-control" id="idproveedor" name="idproveedor" value="{{old('idproveedor',$proveedor->idproveedor)}}" />
+                    <input type="text" class="form-control" id="idproveedor" name="idproveedor" value="{{old('idproveedor',$proveedor->idproveedor)}}"/>
                     
                 </div>
 
@@ -49,24 +49,29 @@
              </div> 
              <div class="form-group row">
                 <label for="inputName" class="col-sm-2 col"><h5>Direccion:</h5></label>
-                <div class="col-sm-4">                        
-                    <input type="number" class="form-control" id="direccion" name="direccion"  value="{{old('direccion',$proveedor->direccion)}}" />
+                <div class="col-sm-2">                        
+                    <input type="text" class="form-control" id="direccion" name="direccion"  value="{{old('direccion',$proveedor->direccion)}}" />
                 </div>
                  <label for="inputName" class="col-sm-2 col"><h5>Telefono:</h5></label>
                  <div class="col-sm-2">                        
                      <input type="text" class="form-control" id="telefono" name="telefono"  value="{{old('telefono',$proveedor->telefono)}}"/>
                  </div>
+                 <label for="inputName" class="col-sm-2 col"><h5>Ciudad:</h5></label>
+                 <div class="col-sm-2">                        
+                     <input type="text" class="form-control" id="ciudad" name="ciudad"  value="{{old('ciudad',$proveedor->ciudad)}}"/>
+                 </div>
                  
              </div> 
              <div class="form-group row">
-                <label for="inputName" class="col-sm-2 col"><h5>Ciudad:</h5></label>
-                 <div class="col-sm-2">                        
-                     <input type="number" class="form-control" id="ciudad" name="ciudad"  value="{{old('ciudad',$proveedor->ciudad)}}"/>
-                 </div>
+                
                  
                  <label for="inputName" class="col-sm-2 col"><h5>Email:</h5></label>
                  <div class="col-sm-4">                        
-                     <input type="number" class="form-control" id="email" name="email"  value="{{old('email',$proveedor->email)}}" />
+                     <input type="text" class="form-control" id="email" name="email"  value="{{old('email',$proveedor->email)}}" />
+                 </div>
+                 <label for="inputName" class="col-sm-2 col"><h5>Cantidad Total Recibida:</h5></label>
+                 <div class="col-sm-4">                        
+                     <input type="number" class="form-control" id="cantidadtotal" name="cantidadtotal"  value="{{old('email',$proveedor->cantidadtotal)}}" />
                  </div>
              </div> 
 

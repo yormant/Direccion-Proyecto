@@ -45,7 +45,7 @@ class ProductosController extends Controller
         $producto = new Producto();        
         $producto->name = $request->get('name');
         $producto->precioproveedor = $request->get('precioproveedor');
-        $producto->idmarca = $idmarca->get('idmarca');
+        $producto->idmarca = $request->get('idmarca');
         DB::select("select createproducto('$producto->name','$producto->precioproveedor',$producto->idmarca)");
 
         return redirect('/productos');
