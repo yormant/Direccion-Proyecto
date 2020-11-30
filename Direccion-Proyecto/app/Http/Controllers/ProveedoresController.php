@@ -44,8 +44,8 @@ class ProveedoresController extends Controller
         $proveedor->name = $request->get('name');
         $proveedor->direccion = $request->get('direccion');
         $proveedor->telefono = $request->get('telefono');
-        $proveedor->ciudad= $ciudad->get('ciudad');
-        $proveedor->email= $email->get('email');
+        $proveedor->ciudad= $request->get('ciudad');
+        $proveedor->email= $request->get('email');
         DB::select("select CreateProveedor('$proveedor->name','$proveedor->direccion','$proveedor->telefono', '$proveedor->ciudad', '$proveedor->email')");
 
         return redirect('/proveedores');

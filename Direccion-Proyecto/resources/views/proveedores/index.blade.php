@@ -62,7 +62,7 @@
                                 <a class="btn btn-success" href="/proveedores/{{$proveedor->idproveedor}}/edit">Editar</a>
                              </td>
                              <td>
-                                <form action="{{route('proveedores.destroy',$proveeddor->idproveedor)}}" method="POST">
+                                <form action="{{route('proveedores.destroy',$proveedor->idproveedor)}}" method="POST">
                                     @csrf
                                     @method('DELETE')                                    
                                     <input 

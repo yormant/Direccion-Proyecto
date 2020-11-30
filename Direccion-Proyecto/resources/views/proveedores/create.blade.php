@@ -31,30 +31,39 @@
         <form action="" method="GET" >
             @csrf
 
-        <div class="form-group row">
+            <div class="form-group row">
                  <label for="inputName" class="col-sm-2 col"><h5>Nombre de la empresa:</h5></label>
                  <div class="col-sm-4">                        
-                     <input type="text" class="form-control" id="nombre" name="nombre" />
+                     <input type="text" class="form-control" id="name" name="name" />
                  </div>
                  
-                 <label for="inputName" class="col-sm-2 col"><h5>NIT:</h5></label>
-                 <div class="col-sm-4">                        
-                     <input type="number" class="form-control" id="nit" name="nit" />
-                 </div>
-             </div> 
-             <div class="form-group row">
                  <label for="inputName" class="col-sm-2 col"><h5>Direccion:</h5></label>
                  <div class="col-sm-2">                        
                      <input type="text" class="form-control" id="direccion" name="direccion"  />
                  </div>
-                 <label for="inputName" class="col-sm-2 col"><h5>Telefono:</h5></label>
+                 
+             </div> 
+             <div class="form-group row">
+
+                <label for="inputName" class="col-sm-2 col"><h5>Telefono:</h5></label>
                  <div class="col-sm-2">                        
-                     <input type="number" class="form-control" id="telefono" name="telefono"  />
+                     <input type="text" class="form-control" id="telefono" name="telefono"  />
                  </div>
+                <label for="inputName" class="col-sm-2 col"><h5>Ciudad:</h5></label>
+                <div class="col-sm-4">                        
+                    <input type="text" class="form-control" id="ciudad" name="ciudad" />
+                </div>
+             </div> 
+             <div class="form-group row">
+                
+                <label for="inputName" class="col-sm-2 col"><h5>Email:</h5></label>
+                <div class="col-sm-4">                        
+                    <input type="text" class="form-control" id="email" name="email" />
+                </div>
              </div> 
              <div class="row">
                 <div class="col-sm-12 text-center">
-                    <button type="button" class="btn btn-info">Agregar</button>
+                    <button type="submit" class="btn btn-info">Agregar</button>
                 </div>
              </div>
         </form>
