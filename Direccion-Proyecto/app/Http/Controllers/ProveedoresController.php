@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Proveedore;
 use Illuminate\Http\Request;
-
+use DB;
 class ProveedoresController extends Controller
 {
     /**
@@ -16,7 +16,7 @@ class ProveedoresController extends Controller
     public function index()
     {
         return view('proveedores.index',[
-            'proveedores'=> Proveedore::all()
+            'proveedores'=> DB::select('select * from ListProveedores();')
         ]);
     }
 
@@ -39,6 +39,17 @@ class ProveedoresController extends Controller
     public function store(Request $request)
     {
         //
+        $proveedor = new Proveedore();                                
+                                   
+        $proveedor->name = $request->get('name');
+        $proveedor->direccion = $request->get('direccion');
+        $proveedor->telefono = $request->get('telefono');
+        $proveedor->ciudad= $request->get('ciudad');
+        $proveedor->email= $request->get('email');
+        $proveedor->cantidadtotal= $request->get('cantidadtotal');
+        DB::select("select CreateProveedor('$proveedor->name','$proveedor->direccion','$proveedor->telefono', '$proveedor->ciudad', '$proveedor->email','$proveedor->cantidadtotal')");
+
+        return redirect('/proveedores');
     }
 
     /**
@@ -58,11 +69,10 @@ class ProveedoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idproveedor)
     {
-        $proveedore = Proveedore::find($id);
         return view('proveedores.edit',[
-            'proveedore'=> $proveedore
+            'proveedores'=> DB::select("select * from showProveedores('$idproveedor')")
         ]);
     }
 
@@ -73,9 +83,20 @@ class ProveedoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idproveedor)
     {
         //
+        $proveedor = new Proveedore();                                
+        $proveedor->idproveedor = $idproveedor;                          
+        $proveedor->name = $request->get('name');
+        $proveedor->direccion = $request->get('direccion');
+        $proveedor->telefono = $request->get('telefono');
+        $proveedor->ciudad= $request->get('ciudad');
+        $proveedor->email= $request->get('email');
+        $proveedor->cantidadtotal= $request->get('cantidadtotal');
+        DB::select("select UpdateProveedor('$proveedor->idproveedor','$proveedor->name','$proveedor->direccion','$proveedor->telefono', '$proveedor->ciudad', '$proveedor->email', '$proveedor->cantidadtotal')");
+
+        return redirect('/proveedores');
     }
 
     /**
@@ -84,9 +105,11 @@ class ProveedoresController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idproveedor)
     {
         //
+        DB::select("select * from DeleteProveedor('$idproveedor')");
+       return redirect('/proveedores');
     }
 }
 

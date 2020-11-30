@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inventario;
+use App\Models\Producto;
+use App\Models\Proveedore;
+use DB;
 class InventariosController extends Controller
 {
     /**
@@ -14,7 +17,10 @@ class InventariosController extends Controller
     public function index()
     {
         return view('inventarios.index',[
-            'inventarios'=> Inventario::all()
+            'inventarios'=> DB::select('select * from ListInventario()'),
+            'productos'=> DB::select('select * from ListProductos()'),
+            'proveedores'=> DB::select('select * from ListProveedores();'),
+            'marcas'=>DB::select('select * from ListMarcas()')
         ]);
     }
 
@@ -26,6 +32,7 @@ class InventariosController extends Controller
     public function create()
     {
         //
+        return view('proveedores.create');
     }
 
     /**
@@ -48,6 +55,7 @@ class InventariosController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -58,9 +66,9 @@ class InventariosController extends Controller
      */
     public function edit($id)
     {
-        $inventario = Inventario::find($id);
         return view('inventarios.edit',[
-            'inventario'=> $inventario
+            'inventarios'=> DB::select('select * from ShowInventarios()'),
+            'productos'=> DB::select('select * from ListProductos()')
         ]);
     }
 

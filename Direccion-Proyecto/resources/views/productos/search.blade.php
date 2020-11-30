@@ -21,20 +21,6 @@
                 <h3>Lista de Prodcutos del Sistema..!</h3>
              </div>
         </div>
-        <form action="" method="post" >
-            <div class="row">
-                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12">
-                    <input type="text" class="text-right" id="buscar" name="buscar" placeholder="Buscar por ID"/>
-                    <button href="/productos/search" class="btn btn-primary text-left">Buscar</button>
-                
-                </div>
-                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 text-right">
-                    <a href="/productos/create"class="btn btn-primary">Agregar</a>
-                    <a href="/inicio"class="btn btn-secondary">Regresar</a>
-                </div>
-             </div>
-        </form>
-        <br>
         <br>
         <div class="row">
              <div class="col">
@@ -62,16 +48,8 @@
                                 <a class="btn btn-success" href="/productos/{{$producto->idproducto}}/edit">Editar</a>
                              </td>
                              <td>
-                                <form action="{{route('productos.destroy',$producto->idproducto)}}" method="POST">
-                                    @csrf
-                                    @method('DELETE')                                    
-                                    <input 
-                                    type="submit"
-                                    class="btn btn-danger"
-                                    value="Delete"
-                                    onclick="return confirm('¿Esta seguro que quiere eliminar El Producto ?')">
-                                    </form>
-                            </td>
+                                <button type="button" class="btn btn-danger">Eliminar</button>
+                             </td>
                          </tr>
                      @endforeach
                  </tbody>

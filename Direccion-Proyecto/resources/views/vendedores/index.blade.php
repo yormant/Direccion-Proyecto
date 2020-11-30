@@ -43,31 +43,33 @@
                          <th>Id</th>
                          <th>Nombre</th>
                          <th>Apellido</th>
-                         <th>Tipo Documento</th>
-                         <th>N° Documento</th>
-                         <th>Correo</th>
                          <th>Usuario</th>
-                         <th>Contraseña</th>
+                         <th type="password">Contraseña</th>
                          <th>Editar</th>
                          <th>Eliminar</th>
                      </thead>
                      <tbody>
-                         @foreach ($vendedores as $vendedore)
+                         @foreach ($vendedores as $vendedor)
                          <tr>
-                             <td>{{$vendedore->id}}</td>
-                             <td>{{$vendedore->nombre}}</td>
-                             <td>{{$vendedore->apellido}}</td>
-                             <td>{{$vendedore->tipo_documento}}</td>
-                             <td>{{$vendedore->numero_documento}}</td>
-                             <td>{{$vendedore->correo}}</td>
-                             <td>{{$vendedore->usaurio}}</td>
-                             <td>{{$vendedore->contrasena}}</td>
+                             <td>{{$vendedor->idvendedor}}</td>
+                             <td>{{$vendedor->name}}</td>
+                             <td>{{$vendedor->lastname}}</td>
+                             <td>{{$vendedor->usuario}}</td>
+                            <td><input class="form-control" type="password" name="password" id="password" value="{{$vendedor->password}}"></td>
                              <td>
-                                <a class="btn btn-success" href="/vendedores/{{$vendedore->id}}/edit">Editar</a>
+                                <a class="btn btn-success" href="/vendedores/{{$vendedor->idvendedor}}/edit">Editar</a>
                              </td>
                              <td>
-                                <button type="button" class="btn btn-danger">Eliminar</button>
-                             </td>
+                                <form action="{{route('vendedores.destroy',$vendedor->idvendedor)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')                                    
+                                    <input 
+                                    type="submit"
+                                    class="btn btn-danger"
+                                    value="Delete"
+                                    onclick="return confirm('¿Esta seguro que quiere eliminar Este Vendedor?')">
+                                    </form>
+                            </td>
                          </tr>
                      @endforeach
                  </tbody>

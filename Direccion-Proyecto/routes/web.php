@@ -20,12 +20,13 @@ use App\Http\Controllers\ComprasController;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
-Route::get('/index',[\App\Http\Controllers\VistaController::class,'index'])->name('index');
+Route::get('/',[\App\Http\Controllers\VistaController::class,'index'])->name('index');
 Route::get('/recordar',[\App\Http\Controllers\VistaController::class,'recordar'])->name('recordar');
+Route::get('/vendedor',[\App\Http\Controllers\VistaController::class,'vendedor'])->name('vendedor');
 Route::get('/inicio',[\App\Http\Controllers\VistaController::class,'inicio'])->name('inicio');
 
 

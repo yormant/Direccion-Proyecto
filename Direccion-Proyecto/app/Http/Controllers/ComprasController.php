@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Compra;
+use DB;
 class ComprasController extends Controller
 {
     /**
@@ -14,7 +15,8 @@ class ComprasController extends Controller
     public function index()
     {
         return view('compras.index',[
-            'compras'=> Compra::all()
+            'productos'=> DB::select('select * from ListProductos()')
+            
         ]);
     }
 
@@ -37,10 +39,11 @@ class ComprasController extends Controller
     public function store(Request $request)
     {
         $compra = new Compra();
-        $compra->producto = $request->get('producto');
+        $total= $_GET['total'];
+        $compra->producto = $request->get('idproducto');
         $compra->cantidad = $request->get('cantidad');
-        $compra->precio_unidad= $request->get('precio_unidad');
-        $compra->precio_total = $request->get('precio_total');
+        $compra->idvendedor= $request->get('idvendedor');
+        $compra->precio_total = $compra;
         $compra->save();
         //Redireccionar a la página que lista los objetivos
         return redirect('/compras');

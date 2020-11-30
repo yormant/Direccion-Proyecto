@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Venta;
 use Illuminate\Http\Request;
-
+use DB;
 class VentasController extends Controller
 {
     /**
@@ -17,7 +17,13 @@ class VentasController extends Controller
     {
 
         return view('ventas.index',[
-            'ventas'=> Venta::all()
+            'compras'=> DB::select('select * from ListCompras()'),
+            'productos'=> DB::select('select * from ListProductos()'),
+            'proveedores'=> DB::select('select * from ListProveedores();'),
+            'marcas'=>DB::select('select * from ListMarcas()'),
+            'ventas'=>DB::select('select * from ListProductosVentas()'),
+            'vendedores'=> DB::select('select * from  ListVendedores();')
+       
         ]);
 
     }
