@@ -4,7 +4,9 @@
 <br>
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <a href="inicio" >
         <img src="/images/celular.png" width="100" height="100" >
+        </a>
     </div>
     <div class="col-lg-7 col-md-4 col-sm-6 col-xs-12">
         <h1 class="text-center">Bienvenido al sistema de ventas..!</h1>

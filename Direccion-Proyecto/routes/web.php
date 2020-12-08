@@ -37,3 +37,7 @@ Route::resource('proveedores', ProveedoresController::class);
 Route::resource('ventas', VentasController::class);
 Route::resource('compras', ComprasController::class);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
